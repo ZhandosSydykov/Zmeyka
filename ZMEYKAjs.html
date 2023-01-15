@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		#block{
+			width: 700px;
+			height: 500px;
+			border: 3px solid red;
+			position: relative;
+			overflow: hidden;
+
+		}
+
+		#box{
+			width: 50px;
+			height: 50px;
+			background-color: green;
+			position: absolute;
+			
+
+		}
+	</style>
+</head>
+<body>
+
+	<div id="block">
+		<div id="box"></div>
+	</div>
+
+
+	<script>
+		let box = document.getElementById('box')
+		let a = 0
+		let b = 0
+		let c = null
+		document.body.onkeyup = function fun(e){
+			c = e.keyCode
+		}
+
+		setInterval ( () => {
+			if(c == 37) {
+				a -= 5
+			} else if (c == 38) {
+				b -= 5
+			} else if (c == 39) {
+				a += 5
+			} else if (c == 40) {
+				b += 5
+			}
+
+			if (a > 700) {
+				a = 0
+			} else if (b > 500) {
+				b = 0
+			} else if (a < -50) {
+				a = 700
+			} else if (b < -50) {
+				b = 500
+			}
+
+			box.style.left = `${a}px`
+			box.style.top = `${b}px`
+		},10)
+
+	</script>
+</body>
+</html>
